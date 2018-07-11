@@ -1,0 +1,87 @@
+{
+"items": [
+        {
+            "icon": "el-icon-setting",
+            "url": "/dashboard",
+            "name": "系统首页"
+        },
+        {
+            "icon": "el-icon-setting",
+            "url": "/authority",
+            "name": "权限管理",
+            "children":[
+                { "icon": "el-icon-caret-right", "url": "User", "name": "用户管理" },
+              
+                { "icon": "el-icon-caret-right", "url": "Resource", "name": "资源管理" }
+            ]
+        },
+        {
+            "icon":"el-icon-tickets",
+            "url":"baseConfig",
+            "name":"基础配置",
+            "children":[
+
+                { "icon": "el-icon-caret-right",
+                    "url": "/Organization",
+                    "name": "机构管理"
+                }, {"icon": "el-icon-caret-right",
+                    "url": "/Channel",
+                    "name": "渠道管理"
+                },
+                {   "icon": "el-icon-caret-right",
+                    "url": "/Merchant",
+                    "name": "场景管理"
+                },
+                {   "icon": "el-icon-caret-right",
+                    "url": "/Service",
+                    "name": "服务管理"
+                },
+                {   "icon": "el-icon-caret-right",
+                    "url": "/ChannelServiceConfig",
+                    "name": "渠道服务配置"
+                },
+                {  "icon": "el-icon-caret-right",
+                    "url": "/NotifyUrlConfig",
+                    "name": "回调地址配置"
+                },
+                {   "icon": "el-icon-caret-right",
+                    "url": "/OrgMerchant",
+                    "name": "机构场景关联配置"
+                }
+            ]
+        },
+        {
+            "icon":"el-icon-tickets",
+            "url":"workFLow",
+            "name":"流水统计",
+            "children":[
+                {
+                    "icon": "el-icon-caret-right",
+                    "url": "Request",
+                    "name": "请求报文"
+                },
+                {
+                    "icon": "el-icon-caret-right",
+                    "url": "ResponseMessage",
+                    "name": "响应报文"
+                },
+                {
+                    "icon": "el-icon-caret-right",
+                    "url": "Callback",
+                    "name": "回调报文"
+                }
+            ]
+        },
+
+       {
+            "icon": "el-icon-error",
+            "url": "403",
+            "name": "403页面"
+        },
+        {
+            "icon": "el-icon-error",
+            "url": "404",
+            "name": "404页面"
+        }
+    ]
+}
