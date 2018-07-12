@@ -21,7 +21,7 @@
         <el-form-item label="菜单图标" prop="icon">
           <treeselect v-model="form.icon" :options="iconmap" placeholder="菜单图标">
             <label slot="option-label" slot-scope="{node}">
-              <span class="icon" :class="node.id"> /{{ node.label }}</span>
+              <span class="icon" :class="node.id"> \{{ node.label }}</span>
             </label>
           </treeselect>
         </el-form-item>

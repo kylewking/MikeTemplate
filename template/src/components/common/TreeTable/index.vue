@@ -17,7 +17,7 @@
           <i v-if="!scope.row._expanded" class="el-icon-caret-right"></i>
           <i v-else class="el-icon-caret-bottom"></i>
         </span>
-        /{{scope.row[column.value]}}
+        \{{scope.row[column.value]}}
       </template>
     </el-table-column>
     <slot></slot>
