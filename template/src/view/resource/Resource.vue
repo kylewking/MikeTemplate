@@ -42,24 +42,24 @@
         <tree-table :data="tableData" :columns="columns" border>
           <el-table-column label="资源内容" min-width="160" header-align="center">
             <template slot-scope="scope">
-              <span>\{{scope.row.url}}</span>
+              <span>{{scope.row.url}}</span>
             </template>
           </el-table-column>
           <el-table-column label="菜单顺序" min-width="60" align="center">
             <template slot-scope="scope">
-              <span>\{{scope.row.order}}</span>
+              <span>{{scope.row.order}}</span>
             </template>
           </el-table-column>
           <el-table-column label="资源图标" min-width="100" header-align="center">
             <template slot-scope="scope">
               <span>
-                <span class="icon" :class="scope.row.icon" :formatter="getIconName">\{{scope.row.icon}}</span>
+                <span class="icon" :class="scope.row.icon" :formatter="getIconName">{{scope.row.icon}}</span>
               </span>
             </template>
           </el-table-column>
           <el-table-column label="描 述" min-width="140" header-align="center">
             <template slot-scope="scope">
-              <span>\{{scope.row.desc}}</span>
+              <span>{{scope.row.desc}}</span>
             </template>
           </el-table-column>
           <el-table-column label="操作" min-width="100" align="center">
