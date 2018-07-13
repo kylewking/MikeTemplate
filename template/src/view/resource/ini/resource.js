@@ -19,7 +19,6 @@ export default {
       enabled_search: null,
       tiltemsg: "",
       editVisible: false,
-      delVisible: false,
 
       iconmap: [{
           label: "菜单",
@@ -68,7 +67,7 @@ export default {
         text: '资源名称',
         value: 'name',
         width: 200,
-        align: "center" 
+        align: "center"
       }]
     };
 
@@ -77,7 +76,8 @@ export default {
     this.getData();
   },
 
-  computed: {},
+  computed: {
+  },
   methods: {
     getIconName(row, column) {
       let name = "";
@@ -99,6 +99,9 @@ export default {
     },
 
     getData() {
+      if (this.enabled_search == undefined) {
+        this.enabled_search = null;
+      };
       this.$axios.post(this.listurl, {
         size: 20,
         page: 1,
@@ -109,7 +112,7 @@ export default {
       });
     },
 
-    add() {debugger;
+    add() {
       this.tiltemsg = "新增";
       this.form = {
         enabled: "true",
@@ -163,19 +166,26 @@ export default {
 
     handleDelete(index, row) {
       this.idx = index;
-      this.delVisible = true;
       this.currentitem = row;
+      this.$confirm('确定删除该条记录?', '提示', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning'
+      }).then(() => {
+        this.deleteRow();
+      }).catch(() => {
+        this.$message({
+          type: 'info',
+          message: '已取消删除'
+        });
+      });
     },
     deleteRow() {
       this.$axios.get(this.deleteurl + this.currentitem.id, this.form).then(res => {
-        if (res.data.statusCode == 200) {
-          this.$message.success("删除成功");
-          this.delVisible = false;
-          this.getData();
-        } else {
-          this.$message.error(res.data.message);
-        }
+        this.$message.success("删除成功");
+        this.getData();
       });
+
     },
 
     closeDialog(data) {

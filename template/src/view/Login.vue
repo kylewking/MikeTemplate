@@ -1,6 +1,6 @@
 <template>
     <div class="login-wrap">
-        <div class="ms-title">后台管理系统</div>
+        <div class="ms-title">\{{title}}</div>
         <div class="ms-login">
             <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="0px" class="demo-ruleForm">
                 <el-form-item prop="username">
@@ -12,7 +12,7 @@
                 <div class="login-btn">
                     <el-button type="primary" @click="submitForm('ruleForm')">登录</el-button>
                 </div>
-                <p style="font-size:12px;line-height:30px;color:#999;">Tips :欢迎使用XX后台管理系统。</p>
+                <p style="font-size:12px;line-height:30px;color:#999;">Tips :欢迎使用\{{title}}系统。</p>
             </el-form>
         </div>
     </div>
@@ -20,9 +20,11 @@
 
 <script>
 
-export default {
-    data: function() {
-        return {
+import sysConfig from '../sysConfig' 
+export default { 
+    data: function() { 
+        return { 
+            title:sysConfig.sysname,
             ruleForm: {
                 username: "",
                 password: ""

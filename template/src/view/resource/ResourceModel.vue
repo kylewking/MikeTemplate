@@ -163,22 +163,28 @@
         if (this.updateform) {
           this.$emit('updateData', this.form) //子组件对frmm修改后向父组件发送事件通知
         }
+        this.$refs['form'].resetFields();
       },
 
       cancelEdit() {
         this.editVisible = false;
+        this.$refs['form'].resetFields();
       },
 
       saveEdit() {
         var qs = require('querystring')
-
-        this.$axios.post(this.saveurl, this.form).then(res => {
-          if (res.data.statusCode == 200) {
-            this.editVisible = false;
-            this.$message.success(`保存成功`);
-            this.getData();
-          } else {
-            this.$message.error(res.data.message);
+        this.$refs.form.validate(valid => {
+          if (valid) {
+            this.$axios.post(this.saveurl, this.form).then(res => {
+              if (res.data.statusCode == 200) {
+                this.editVisible = false;
+                this.$message.success(`保存成功`);
+                this.updateform = true;
+                this.$refs['form'].resetFields();
+              } else {
+                this.$message.error(res.data.message);
+              }
+            });
           }
         });
       }
