@@ -26,7 +26,7 @@ function hasPermission(addRouters, title) {
   return flag
 }
 
-const whiteList = ['/login', '/404'] // no redirect whitelist
+const whiteList = ['/login', '/404', '/403'] // no redirect whitelist
 
 //使用钩子函数对路由进行权限跳转
 router.beforeEach((to, from, next) => {
