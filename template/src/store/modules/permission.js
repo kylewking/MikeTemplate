@@ -17,7 +17,8 @@ function getAddrouter(routers,permissions){
         menu.meta.auth= true
         menu.meta.title=permissions[i].name
         // menu.component = function(){return import(`@/view${permissions[i].path}.vue`) }
-        menu.component = function(resolve){require(["@/view"+permissions[i].path+".vue"], resolve)}
+        // menu.component = function (resolve) {require(["@/view" + permissions[i].path + ".vue"], resolve)}
+        menu.component = function(resolve){require([permissions[i].path+".vue"], resolve)}
         children.push(menu)
       }
   }
