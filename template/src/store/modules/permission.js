@@ -1,8 +1,8 @@
 import {
   constantRouterMap
 } from '@/router'
-import Layout from '@/components/common/Home.vue'
-import lazyLoading from '@/utils/lazyLoading'
+import Layout from 'base/view/common/Home.vue'
+import lazyLoading from 'base/public/javascripts/lazyLoading'
 
 //import commuip from 'commuip/index.js'
 //import commuam from 'commuam/index.js'
