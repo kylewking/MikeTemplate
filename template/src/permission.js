@@ -5,66 +5,7 @@ import NProgress from 'nprogress' // progress bar
 import 'nprogress/nprogress.css' // progress bar style
 
 import axios from 'axios';
-import {
-  Message
-} from 'element-ui';
-axios.defaults.withCredentials = false
 axios.defaults.baseURL = '/Uip';
-axios.defaults.emulateJSON = true
-var qstr = require('querystring');
-axios.interceptors.request.use((config) => {
-  if (config.method == "post") {
-    let strData = qstr.stringify(config.data);
-    config.data = strData;
-    config.headers["Content-Type"] = "application/x-www-form-urlencoded; charset=UTF-8";
-  }
-  return config;
-}, (error) => {
-  Message.error('请求超时!');
-  return Promise.reject(error);
-});
-
-axios.interceptors.response.use(data => {
-  if (data.status && data.status == 200 && data.data.status == 'error') {
-    Message.error(data.data.message);
-    return Promise.reject();
-  }
-  if (data.data && data.data.statusCode == '10000') {
-    Message.error({
-      message: data.data.message,
-      duration: 2000
-    });
-    sessionStorage.removeItem('isLogin')
-    store.state.permission.addRouters = []
-    sessionStorage.removeItem('user');
-    sessionStorage.removeItem('permission');
-    localStorage.removeItem('ms_username');
-    // let tourl=data.config.url.slice(axios.defaults.baseURL.length);, query: {redirect: tourl}
-    router.push({
-      path: '/login'
-    })
-
-    return Promise.reject();
-  }
-  // return Promise.resolve(data);
-  return data;
-}, err => {
-  if (err.response.status == 504 || err.response.status == 404) {
-    Message.error("服务器被吃了⊙﹏⊙∥");
-    router.push('/404');
-  } else if (err.response.status == 403) {
-    Message.error('权限不足,请联系管理员!');
-  } else if (err.response.status == 302) {
-    Message.error("权限不足,请联系管理员!");
-  } else {
-    Message.error("未知错误!");
-    router.push('/403');
-  }
-  return Promise.reject(error);
-})
-axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
-Vue.prototype.$axios = axios;
-
 
 NProgress.configure({
   showSpinner: false
