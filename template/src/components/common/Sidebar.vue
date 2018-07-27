@@ -29,12 +29,7 @@
         data(){
             return {
                 collapse : false, 
-                items:[  {
-                        "id":1,
-                        "icon": "el-icon-setting",
-                        "url": "/dashboard",
-                        "name": "系统首页"
-                    } ],
+                items:[],
             }
         },
         mounted :function(){
@@ -43,18 +38,8 @@
         methods:{
             getData(){
                 this.items = JSON.parse(sessionStorage.getItem('permission')); 
-
-                // let vm = this;
-                // this.$axios.get("../../static/Sidebardata.json").then(function (response) {
-                //     vm.items=response.data.items;
-                // }).catch(function (error) {
-                //     console.log(error);
-                // });
-               
             }
         },
-        
-       
         computed:{
             onRoutes(){
                 // return this.$route.path.replace('/','');
